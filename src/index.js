@@ -1,4 +1,4 @@
-import "/Users/dinakazakova/mesto-project-ff/src/pages/index.css";
+import "./pages/index.css";
 import {
   arkhyzImage,
   chelyabinskoblastImage,
@@ -7,9 +7,9 @@ import {
   kholmogorskyrayonImage,
   baikalImage,
   initialCards,
-} from "./cards.js";
-import { openPopup, closePopup } from "./modal.js";
-import { createCard, removeCard, likeCard } from "./card.js";
+} from "./scripts/cards.js";
+import { openPopup, closePopup } from "./scripts/modal.js";
+import { createCard, removeCard, likeCard } from "./scripts/card.js";
 
 const placesList = document.querySelector(".places__list");
 
