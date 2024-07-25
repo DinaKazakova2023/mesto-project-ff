@@ -56,6 +56,16 @@ const getUserDataServer = (name, about) => {
   }).then(handleRes);
 };
 
+const changeAvatar = (avatar) => {
+  return fetch(`${PATH.baseUrl}/users/me/avatar`, {
+    method: "PATCH",
+    headers: PATH.headers,
+    body: JSON.stringify({
+      avatar: avatar,
+    }),
+  }).then(handleRes);
+};
+
 const likeCardApi = (cardId) => {
   return fetch(`${PATH.baseUrl}/cards/likes/${cardId}`, {
     method: "PUT",
@@ -74,15 +84,5 @@ const deleteCardApi = (cardId) => {
   return fetch(`${PATH.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: PATH.headers,
-  }).then(handleRes);
-};
-
-const changeAvatar = (avatar) => {
-  return fetch(`${PATH.baseUrl}/users/me/avatar`, {
-    method: "PATCH",
-    headers: PATH.headers,
-    body: JSON.stringify({
-      avatar: avatar,
-    }),
   }).then(handleRes);
 };

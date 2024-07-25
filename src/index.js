@@ -1,4 +1,7 @@
 import "./pages/index.css";
+import { openPopup, closePopup } from "./scripts/modal.js";
+import { createCard, removeCard, likeCard } from "./scripts/card.js";
+import { enableValidation, clearValidation } from "./scripts/validation.js";
 import {
   getAddNewCard,
   getInfoUser,
@@ -6,11 +9,8 @@ import {
   getUserDataServer,
   changeAvatar,
 } from "./scripts/api.js";
-import { openPopup, closePopup } from "./scripts/modal.js";
-import { createCard, removeCard, likeCard } from "./scripts/card.js";
-import { enableValidation, clearValidation } from "./scripts/validation.js";
 
-
+// DOM
 const placesList = document.querySelector(".places__list");
 const profileAddButton = document.querySelector(".profile__add-button"); // кнопка добавить карточку
 const profileTitle = document.querySelector(".profile__title"); // имя
@@ -23,13 +23,10 @@ const inputDescription = popupTypeEdit.querySelector(
 ); // инпут профессия в модалке
 const popupTypeNewCard = document.querySelector(".popup_type_new-card"); // модалка добавления новой карточки
 const popupFormNewCard = popupTypeNewCard.querySelector(".popup__form"); // форма добавления карточки
-
 const popupTypeImage = document.querySelector(".popup_type_image"); //модалка карточки
 const popupImage = document.querySelector(".popup__image"); // картинка в модалке
 const popupCaption = document.querySelector(".popup__caption"); // название карточки
 const closeButton = document.querySelectorAll(".popup__close"); // кнопка закрыть модалку
-
-// новые переменные
 const popupTypeAvatar = document.querySelector(".popup_type_avatar"); // модалка редактирования аватарки
 const formEditAvatar = document.forms["profile-edit-avatar"]; // форма редактирования аватарки
 const formAddCard = document.forms["new-place"]; // добавление новой карточки
@@ -53,7 +50,7 @@ const validationConfig = {
 };
 enableValidation(validationConfig);
 
-
+// api
 let userId = "";
 Promise.all([getInfoUser(), getAddNewCard()])
   .then(([userData, initialCards]) => {
@@ -124,7 +121,7 @@ function addCardNew(evt) {
       formAddCard.reset();
     })
     .catch((err) => {
-      console.log("Oшибка при добавлении карточки:", err);
+      console.log("Oшибка при добавлении новой карточки:", err);
     })
     .finally(() => {
       saveButton(false, buttonFormCard);
@@ -154,7 +151,7 @@ function editAvatar(evt) {
       clearValidation(popupTypeAvatar, validationConfig);
     })
     .catch((err) => {
-      console.log("Oшибка при изменении аватара:", err);
+      console.log("Oшибка при изменении фотки аватара:", err);
     })
     .finally(() => {
       saveButton(false, buttonFormAvatar);
