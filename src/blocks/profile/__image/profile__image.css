@@ -16,8 +16,9 @@
   inset: 0;
   opacity: 0;
   display: block;
-  background: transparent url("../../../images/edit-icon.svg") center / 20%
-    no-repeat;
+  /* background: transparent url("../../../images/edit-icon.svg") center / 20%
+    no-repeat; */
+    
 }
 
 .profile__image:hover {
@@ -26,7 +27,11 @@
 
 .profile__image:hover::before {
   opacity: 1;
+  background: transparent url("/src/images/edit-icon.svg") center / 20%
+  no-repeat;
+  z-index: 2;
 }
+
 
 @media screen and (max-width: 740px) {
   .profile__image {
