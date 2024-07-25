@@ -1,4 +1,3 @@
-
 export { enableValidation, clearValidation };
 
 function isValid(form, input, validationConfig) {
@@ -49,19 +48,19 @@ function toggleButtonState(inputList, buttonElement, config) {
 }
 
 function clearValidation(formElement, settings) {
-    const inputList = Array.from(
-      formElement.querySelectorAll(settings.inputSelector)
-    );
-    const buttonElement = formElement.querySelector(
-      settings.submitButtonSelector
-    );
-    inputList.forEach((inputElement) => {
-      inputElement.setCustomValidity("");
-      hideInputError(formElement, inputElement, settings);
-      inputElement.classList.remove("input-touched");
-    });
-    toggleButtonState(inputList, buttonElement, settings);
-  }
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.inputSelector)
+  );
+  const buttonElement = formElement.querySelector(
+    settings.submitButtonSelector
+  );
+  inputList.forEach((inputElement) => {
+    inputElement.setCustomValidity("");
+    hideInputError(formElement, inputElement, settings);
+    inputElement.classList.remove("input-touched");
+  });
+  toggleButtonState(inputList, buttonElement, settings);
+}
 
 function setEventListeners(formElement, config) {
   const inputList = Array.from(
