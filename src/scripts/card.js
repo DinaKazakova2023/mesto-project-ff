@@ -72,7 +72,11 @@ export function likeCard(cardLikeButton, cardLikeNumber, cardId) {
 
 // функция удаления карточки
 export function removeCard(card, cardId) {
-  deleteCardApi(cardId).then(() => {
-    card.remove();
-  });
+  deleteCardApi(cardId)
+    .then(() => {
+      card.remove();
+    })
+    .catch((err) => {
+      console.log(`Ошибка удаления карточки:`, err);
+    });
 }

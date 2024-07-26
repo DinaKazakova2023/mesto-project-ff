@@ -86,7 +86,6 @@ function handleProfileFormSubmit(evt) {
     .then((data) => {
       profileTitle.textContent = data.name;
       profileDescription.textContent = data.about;
-      clearValidation(popupTypeEdit, validationConfig);
       closePopup(popupTypeEdit);
       profileForm.reset();
     })
@@ -148,7 +147,6 @@ function editAvatar(evt) {
       profileImage.style.backgroundImage = `url(${item.avatar})`;
       closePopup(popupTypeAvatar);
       formEditAvatar.reset();
-      clearValidation(popupTypeAvatar, validationConfig);
     })
     .catch((err) => {
       console.log("Oшибка при изменении фотки аватара:", err);

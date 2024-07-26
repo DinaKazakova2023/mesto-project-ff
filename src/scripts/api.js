@@ -17,7 +17,7 @@ const PATH = {
   },
 };
 
-const handleRes = (res) => {
+const checkResponse = (res) => {
   if (res.ok) {
     return res.json();
   } else {
@@ -28,13 +28,13 @@ const handleRes = (res) => {
 const getAddNewCard = () => {
   return fetch(`${PATH.baseUrl}/cards`, {
     headers: PATH.headers,
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const getInfoUser = () => {
   return fetch(`${PATH.baseUrl}/users/me`, {
     headers: PATH.headers,
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const addCardServer = (name, link) => {
@@ -42,7 +42,7 @@ const addCardServer = (name, link) => {
     method: "POST",
     headers: PATH.headers,
     body: JSON.stringify(name, link),
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const getUserDataServer = (name, about) => {
@@ -53,7 +53,7 @@ const getUserDataServer = (name, about) => {
       name: name,
       about: about,
     }),
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const changeAvatar = (avatar) => {
@@ -63,26 +63,26 @@ const changeAvatar = (avatar) => {
     body: JSON.stringify({
       avatar: avatar,
     }),
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const likeCardApi = (cardId) => {
   return fetch(`${PATH.baseUrl}/cards/likes/${cardId}`, {
     method: "PUT",
     headers: PATH.headers,
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const deleteLikeCardApi = (cardId) => {
   return fetch(`${PATH.baseUrl}/cards/likes/${cardId}`, {
     method: "DELETE",
     headers: PATH.headers,
-  }).then(handleRes);
+  }).then(checkResponse);
 };
 
 const deleteCardApi = (cardId) => {
   return fetch(`${PATH.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
     headers: PATH.headers,
-  }).then(handleRes);
+  }).then(checkResponse);
 };

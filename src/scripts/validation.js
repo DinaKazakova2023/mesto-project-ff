@@ -54,12 +54,10 @@ function clearValidation(formElement, settings) {
   const buttonElement = formElement.querySelector(
     settings.submitButtonSelector
   );
-  inputList.forEach((inputElement) => {
-    inputElement.setCustomValidity("");
-    hideInputError(formElement, inputElement, settings);
-    inputElement.classList.remove("input-touched");
-  });
   toggleButtonState(inputList, buttonElement, settings);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, settings);
+  });
 }
 
 function setEventListeners(formElement, config) {
@@ -70,21 +68,13 @@ function setEventListeners(formElement, config) {
   toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      inputElement.classList.add("input-touched");
+    inputElement.addEventListener("input", function () {
       isValid(formElement, inputElement, config);
       toggleButtonState(inputList, buttonElement, config);
     });
 
     inputElement.addEventListener("focus", () => {
       hideInputError(formElement, inputElement, config);
-    });
-
-    inputElement.addEventListener("blur", () => {
-      if (inputElement.value.length > 0) {
-        inputElement.classList.add("input-touched");
-        isValid(formElement, inputElement, config);
-      }
     });
   });
 }

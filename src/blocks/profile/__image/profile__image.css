@@ -19,13 +19,13 @@
 .profile__image::before {
   content: "";
   display: block;
-  position: relative;
+  position: absolute;
   opacity: 0;
   inset: 0;
   width: 26px;
   height: 26px;
-  background-image: transparent url("../../../images/edit-icon.svg") center /
-    30% no-repeat;
+  background: transparent url("../../../images/edit-icon.svg") center / 30%
+    no-repeat;
   z-index: 2;
 }
 
